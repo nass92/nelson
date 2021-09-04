@@ -61,9 +61,9 @@ function Login({ title, desc, ...rest }) {
 
         <VStack >
           <Heading>
-            <Navbar.Brand href="#home">Nakamo N.</Navbar.Brand>
+            <Navbar.Brand href="#home">Makamo N.</Navbar.Brand>
           </Heading>
-          <p>The TexTokenAddress : <a href="https://rinkeby.etherscan.io/address/xxxxx" style={{ color: "red" }}>{ }</a></p>
+          <p>The NelsonTokenAddress : <a href="https://rinkeby.etherscan.io/address/xxxxx" style={{ color: "red" }}>{ }</a></p>
         </VStack>
       </Stack>
 

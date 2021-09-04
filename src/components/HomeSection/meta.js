@@ -25,6 +25,10 @@ function StackEx() {
         title="MetaMask"
         desc="Please Install Metamask extension before use any fonction of this site."
       />
+      <Feature
+        title="Brave"
+        desc="Pour une meilleur  navigation, nous vous conseillions de d'utiliser le navigateur Brave."
+      />
 
     </VStack>
   )

@@ -2,8 +2,9 @@ import React from 'react'
 import HomeSection from './Caroussel'
 import { homeObjOne } from './Data'
 import Navbar from "../Log & footer/NavBar";
-import Hash from '../Contracts & hash/hash';
 import StackEx from './meta';
+import NavBar from './Navbar';
+import GridText from './Grid'
 function Home() {
 
   return (
@@ -12,8 +13,9 @@ function Home() {
       <Navbar />
       <HomeSection {...homeObjOne} />
       <div>
-        <StackEx />
-        <Hash />
+
+
+        <GridText />
       </div>
     </>
   )

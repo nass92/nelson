@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-import App from "./App";
+import Dapp from "./Dapp";
 import reportWebVitals from "./reportWebVitals";
 import {
   BrowserRouter as Router
@@ -19,7 +19,7 @@ ReactDOM.render(
     <ChakraProvider >
       <Web3Provider>
         <Router>
-          <App />
+          <Dapp />
         </Router>
       </Web3Provider>
     </ChakraProvider>
