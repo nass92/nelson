@@ -1,4 +1,4 @@
-import "./App.css";
+
 import React from "react";
 import App from "./App";
 import { useContract } from "web3-hooks";
