@@ -6,8 +6,8 @@ export const projectsData = [
     languages: ["React", "Php", "Sass"],
     infos:
       "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quas cumque labore suscipit, pariatur laboriosam autem omnis saepe quisquam enim iste.",
-    img: "https://ipfs.io/ipfs/QmZmUWFtAU7CPRMAzheBiE1Aq9FSFE4cWLXvrTH5orruwC",
-    link: "https://ipfs.io/ipfs/QmZmUWFtAU7CPRMAzheBiE1Aq9FSFE4cWLXvrTH5orruwC",
+    img: "https://ipfs.io/ipfs/QmRDN1YypUNkUbg1RfkzQGBPkQVpYMad8uFQxbbG2m9MWm",
+    link: "https://ipfs.io/ipfs/QmRDN1YypUNkUbg1RfkzQGBPkQVpYMad8uFQxbbG2m9MWm",
   },
   {
     id: 2,
