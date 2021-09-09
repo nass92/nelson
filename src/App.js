@@ -6,6 +6,7 @@ import Contact from "./Pages/Contact";
 import Nft from "./Pages/Nft";
 import { AnimatePresence } from "framer-motion";
 import Expo from "./components/Expo";
+import Creation from "./Pages/Create";
 
 const App = () => {
   const location = useLocation();
@@ -71,6 +72,7 @@ const App = () => {
         <Route path="/projet-3" component={Project3} />
         <Route path="/projet-4" component={Project4} />
         <Route path="/expo" component={Expo} > <Expo /></Route>
+        <Route path="/create" component={Creation} > <Creation/></Route>
         <Route path="/contact" component={Contact} />
         <Redirect to='/' />
       </Switch>

@@ -26,9 +26,16 @@ const Navigation = () => {
             </NavLink>
           </ul>
         </li>
-        <NavLink to="/expo" activeClassName="nav-active" className="hover">
-          <li>NFT</li>
+        <li className="nav-portfolio">NFT
+        <ul className="nav-projects">
+        <NavLink to="/create" activeClassName="nav-active" className="hover">
+          <li>Create</li>
         </NavLink>
+        <NavLink to="/expo" activeClassName="nav-active" className="hover">
+          <li>Exposition</li>
+        </NavLink>
+        </ul>
+        </li>
         <NavLink to="/contact" activeClassName="nav-active" className="hover">
           <li>contact</li>
         </NavLink>
