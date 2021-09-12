@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Switch, Route, useLocation, useHistory, Redirect } from "react-router-dom";
 import Home from "./Pages/Home";
-import { Project1, Project2, Project3, Project4 } from "./Pages/Project";
+import { Projects } from "./Pages/Project";
 import Contact from "./Pages/Contact";
 import Nft from "./Pages/Nft";
 import { AnimatePresence } from "framer-motion";
@@ -67,10 +67,7 @@ const App = () => {
     <AnimatePresence>
       <Switch location={location} key={location.pathname}>
         <Route exact path="/" component={Home} />
-        <Route path="/projet-1" component={Project1} />
-        <Route path="/projet-2" component={Project2} />
-        <Route path="/projet-3" component={Project3} />
-        <Route path="/projet-4" component={Project4} />
+        <Route path="/projet/:id" component={Projects} />
         <Route path="/expo" component={Expo} > <Expo /></Route>
         <Route path="/create" component={Creation} > <Creation/></Route>
         <Route path="/contact" component={Contact} />

@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 
 const Navigation = () => {
 
+
   return (
     <div className="navigation">
       <ul>
@@ -12,20 +13,21 @@ const Navigation = () => {
 
         <li className="nav-portfolio">portfolio
           <ul className="nav-projects">
-            <NavLink to="/projet-1" activeClassName="nav-active" className="hover">
+            <NavLink to="/projet/1" activeClassName="nav-active" className="hover">
               <li>projet 1</li>
             </NavLink>
-            <NavLink to="/projet-2" activeClassName="nav-active" className="hover">
+            <NavLink to="/projet/2" activeClassName="nav-active" className="hover">
               <li>projet 2</li>
             </NavLink>
-            <NavLink to="/projet-3" activeClassName="nav-active" className="hover">
+            <NavLink to="/projet/3" activeClassName="nav-active" className="hover">
               <li>projet 3</li>
             </NavLink>
-            <NavLink to="/projet-4" activeClassName="nav-active" className="hover">
+            <NavLink to="/projet/4" activeClassName="nav-active" className="hover">
               <li>projet 4</li>
             </NavLink>
           </ul>
         </li>
+
         <li className="nav-portfolio">NFT
         <ul className="nav-projects">
         <NavLink to="/create" activeClassName="nav-active" className="hover">

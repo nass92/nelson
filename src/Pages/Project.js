@@ -4,58 +4,19 @@ import ButtonsBottom from '../components/ButtonBottom';
 import Logo from '../components/logo';
 import Project from '../components/Project';
 import Mouse from '../components/Mouse';
+import { useRouteMatch } from "react-router-dom";
 
-export const Project1 = () => {
+export const Projects = () => {
+  const match = useRouteMatch("/projet/:id");
+  console.log(match.params)
   return (
     <main>
       <Mouse />
       <div className="project">
         <Navigation />
         <Logo />
-        <Project projectNumber={0} />
-        <ButtonsBottom left={'/'} right={'/projet-2'} />
-      </div>
-    </main>
-  );
-};
-
-export const Project2 = () => {
-  return (
-    <main>
-      <Mouse />
-      <div className="project">
-        <Navigation />
-        <Logo />
-        <Project projectNumber={1} />
-        <ButtonsBottom left={"/projet-1"} right={"/projet-3"} />
-      </div>
-    </main>
-  );
-};
-
-export const Project3 = () => {
-  return (
-    <main>
-      <Mouse />
-      <div className="project">
-        <Navigation />
-        <Logo />
-        <Project projectNumber={2} />
-        <ButtonsBottom left={"/projet-2"} right={"/projet-4"} />
-      </div>
-    </main>
-  );
-};
-
-export const Project4 = () => {
-  return (
-    <main>
-      <Mouse />
-      <div className="project">
-        <Navigation />
-        <Logo />
-        <Project projectNumber={3} />
-        <ButtonsBottom left={"/projet-3"} right={"/expo"} />
+        <Project projectNumber={match.params.id} />
+        <ButtonsBottom left={parseInt(match.params.id) === 1 ? '/': `/projet/${match.params.id - 1}`} right={`/projet/${parseInt(match.params.id) + 1}`} />
       </div>
     </main>
   );
