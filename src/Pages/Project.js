@@ -16,7 +16,7 @@ export const Projects = () => {
         <Navigation />
         <Logo />
         <Project projectNumber={match.params.id} />
-        <ButtonsBottom left={parseInt(match.params.id) === 1 ? '/': `/projet/${match.params.id - 1}`} right={`/projet/${parseInt(match.params.id) + 1}`} />
+        <ButtonsBottom left={parseInt(match.params.id) === 1 ? '/': `/projet/${match.params.id - 1}`} right={parseInt(match.params.id) === 3 ?'/expo' : `/projet/${parseInt(match.params.id) + 1}`} />
       </div>
     </main>
   );
