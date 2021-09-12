@@ -77,7 +77,8 @@ const Nff = ({ nft }) => {
             <h3>{nft.title}</h3>
             <p>{nft.txt}</p>
           </span>
-          <video src={nft.url} alt={nft.title} className="video" />
+          <img src={nft.url} alt={nft.title} className="video" />
+          {/*<video src={nft.url} alt={nft.title} className="video" />*/}
         </div>
         <div className="button-container">
           <a href={nft.url} target="_blank" rel="noopener noreferrer" className="hover">

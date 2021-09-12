@@ -5,36 +5,62 @@ import { DappContext} from "../../Dapp"
 import { useState, useContext } from "react"
 import { Web3Context } from "web3-hooks";
 import { ethers } from "ethers";
+import { useForm } from "react-hook-form"
+import axios from "axios";
+require('dotenv').config()
 
 const Create= () => {
-  let [value, setValue] = useState({txt: "",title:"", author: "", url:"" })
-  let handleInputChange = (e) => {
-    let inputValue = e.target.value
-    setValue({...value, txt: inputValue})
-  }
-  const TXT = useContext(DappContext)
   const [web3State] = useContext(Web3Context);
-  const [, setLoading] = useState(false)
+  const TXT = useContext(DappContext)
   const toast = useToast()
+  const {
+    register,
+    watch,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+  const [, setLoading] = useState(false)
+
+  const pinOnIpfs = async (file) => {
+  try {
+    let formatData = new FormData();
+    formatData.append("file", file);
+
+    const hash = await axios.post(`https://api.pinata.cloud/pinning/pinFileToIPFS`, formatData, {
+        headers: {
+          "Content-Type": `multipart/form-data; boundary=${formatData._boundary}`,
+          pinata_api_key: process.env.REACT_APP_PINATA_API_KEY,
+          pinata_secret_api_key: process.env.REACT_APP_PINATA_SECRET_KEY,
+        },
+      })
+      .then((result) => result.data.IpfsHash);
+
+    return hash
+  } catch (e) {
+    console.error(e.message)
+  }
+}
 
 
 const handleSendNFT = async () => {
-  const txt = value.txt.trim().split("").filter(el => !['!','?','.',';',':','/',','].includes(el)).join('').split('  ').join('').toLowerCase()
-  const textHashed = await ethers.utils.id(txt)
- 
-   const nft = {
-      author: value.author.toString(),
+  try {
+    setLoading(true)
+    const txt = watch().message.trim().split("").filter(el => !['!','?','.',';',':','/',','].includes(el)).join('').split('  ').join('').toLowerCase()
+    const textHashed = await ethers.utils.id(txt)
+    const hash = await pinOnIpfs(watch().file[0])
+    const nft = {
+      author: watch().author.toString(),
       textHashed: textHashed,
-      txt: value.txt,
-      url: value.url,
-      title: value.title,
-      }
-     setLoading(true)
-   try {
-    const tx = await TXT.certify(nft, web3State.account)
+      txt: watch().message,
+      url: `https://gateway.pinata.cloud/ipfs/${hash}`,
+      title: watch().title,
+    }
+    console.log(nft)
+    const tx = await TXT.certify(nft.textHashed, nft.txt, nft.title, nft.url, nft.author)
+    console.log('coucou')
     const network = web3State.networkName.toLowerCase()
     const link = `https://${network}.etherscan.io/tx/${tx.hash}`
-   
+    
      toast({
       title: 'Transaction sent successfully !',
        render: () => (
@@ -50,9 +76,10 @@ const handleSendNFT = async () => {
     })
     await tx.wait()
   } catch (e) {
+    console.log(e)
      toast({
       title: 'Error',
-      description:  e.message,
+      description: e.message,
       status: 'error',
       position: 'top-right',
       duration: 9000,
@@ -64,43 +91,42 @@ const handleSendNFT = async () => {
 }
 
   return(
-    <form className="contact-form">
+    <form onSubmit={handleSubmit(handleSendNFT)} className="contact-form">
     <h2>contactez-nous</h2>
     <div className="form-content">
       <input
         type="text"
         required
-        onChange={(e) => setValue({...value, author: e.target.value})} 
         placeholder="Artist name"
-        value={value.author}
+        {...register('author')}
       />
       <input
         type="text"
-        onChange={(e) => setValue({...value, title: e.target.value})} 
         placeholder="NFT title"
-        value={value.title}
+        {...register('title')}
       />
       
    
       <input
-        type="text"
-        onChange={(e) => setValue({...value, url: e.target.value})} 
+        type="file"
+        id='file'
+        name='file'
+        accept='image/*, video/*'
         placeholder="https://ipfs.io/ipfs/Qmede1ffVCyfg3YvPoAhSmFY3p8CeCzRPHejoX8hv6YrNL "
-        value={value.url}
+        {...register('file')}
       />
          
         
       <textarea
-        onChange={handleInputChange}
         placeholder="message *"
-        value={value.txt}
+        {...register('message')}
         required
       />
     </div>
     
     <Button onClick={handleSendNFT}  colorScheme="blue" mr={3}>
-    Create
-              </Button>
+      Create
+    </Button>
     <div className="form-message"></div>
   </form>
   );

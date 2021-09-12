@@ -14,7 +14,6 @@ const App = () => {
 
   useEffect(() => {
     const handleScrollToElement = (e) => {
-      console.log(e.wheelDeltaY);
       const url = window.location.origin + "/";
 
       const wheelRouter = (after, before) => {

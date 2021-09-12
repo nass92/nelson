@@ -36,7 +36,8 @@ const Expo = (nft) => {
 
             if (owner.toLowerCase() === web3State.account.toLowerCase()) {
 
-              const nft = await TXT.getTXTById(i)
+              const nft = await TXT.getNMById(i)
+              console.log(nft)
 
 
               expoOWned.push({

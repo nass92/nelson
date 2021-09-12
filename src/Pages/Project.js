@@ -8,7 +8,6 @@ import { useRouteMatch } from "react-router-dom";
 
 export const Projects = () => {
   const match = useRouteMatch("/projet/:id");
-  console.log(match.params)
   return (
     <main>
       <Mouse />

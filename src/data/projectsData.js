@@ -6,8 +6,8 @@ export const projectsData = [
     languages: ["React", "Php", "Sass"],
     infos:
       "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quas cumque labore suscipit, pariatur laboriosam autem omnis saepe quisquam enim iste.",
-    img: "https://ipfs.io/ipfs/QmRDN1YypUNkUbg1RfkzQGBPkQVpYMad8uFQxbbG2m9MWm",
-    link: "https://ipfs.io/ipfs/QmRDN1YypUNkUbg1RfkzQGBPkQVpYMad8uFQxbbG2m9MWm",
+    img: "https://gateway.pinata.cloud/ipfs/QmXCtTmhbm3wPzXXNP4WtC4Uxk7DC8aZzUWDUEhKwspiNN",
+    link: "https://gateway.pinata.cloud/ipfs/QmXCtTmhbm3wPzXXNP4WtC4Uxk7DC8aZzUWDUEhKwspiNN",
   },
   {
     id: 2,
@@ -16,8 +16,8 @@ export const projectsData = [
     languages: ["Symfony", "Vue"],
     infos:
       "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quas cumque labore suscipit, pariatur laboriosam autem omnis saepe quisquam enim iste.",
-    img: "https://ipfs.io/ipfs/Qmede1ffVCyfg3YvPoAhSmFY3p8CeCzRPHejoX8hv6YrNL",
-    link: "https://ipfs.io/ipfs/Qmede1ffVCyfg3YvPoAhSmFY3p8CeCzRPHejoX8hv6YrNL",
+    img: "https://gateway.pinata.cloud/ipfs/QmWmr9dAh6x5AZ1adjQ4oArTSG3XkBSLS7x3RsSj4ahCU9",
+    link: "https://gateway.pinata.cloud/ipfs/QmWmr9dAh6x5AZ1adjQ4oArTSG3XkBSLS7x3RsSj4ahCU9",
   },
   {
     id: 3,
@@ -26,8 +26,8 @@ export const projectsData = [
     languages: ["Wordpress", "Php", "React"],
     infos:
       "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quas cumque labore suscipit, pariatur laboriosam autem omnis saepe quisquam enim iste.",
-    img: "https://ipfs.io/ipfs/QmThu8ZuCtKAiywkr4oziC3hiFy6XTngCzfTHfeeFDbN8b",
-    link: "https://ipfs.io/ipfs/QmThu8ZuCtKAiywkr4oziC3hiFy6XTngCzfTHfeeFDbN8b",
+    img: " https://gateway.pinata.cloud/ipfs/QmVgNMHXieyX5X7fPZpTAfvhtW1NyWipCjaWLZUQxwEDJi",
+    link: " https://gateway.pinata.cloud/ipfs/QmVgNMHXieyX5X7fPZpTAfvhtW1NyWipCjaWLZUQxwEDJi",
   },
   {
     id: 4,
@@ -36,7 +36,7 @@ export const projectsData = [
     languages: ["Vue", "Php"],
     infos:
       "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quas cumque labore suscipit, pariatur laboriosam autem omnis saepe quisquam enim iste.",
-    img: "https://ipfs.io/ipfs/QmPEeqB6tarC8w1nhBERKLN7hsdg9JTLqpeCfczgSkbk6Z",
-    link: "https://ipfs.io/ipfs/QmPEeqB6tarC8w1nhBERKLN7hsdg9JTLqpeCfczgSkbk6Z",
+    img: "https://gateway.pinata.cloud/ipfs/QmecCxXFakpxUmteJukLcehhe54F8eksoVry5JU5T94fT9",
+    link: "https://gateway.pinata.cloud/ipfs/QmecCxXFakpxUmteJukLcehhe54F8eksoVry5JU5T94fT9",
   },
 ];

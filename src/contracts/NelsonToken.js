@@ -1,4 +1,4 @@
-export const NelsonTokenAddress = "0x18164a75987bb44e006778616Fab51febDB802d2";
+export const NelsonTokenAddress = "0x5eD2F10085dE51e62Fe7C134BeFaa852B57D7295";
 
 export const NelsonTokenAbi =
 	[
@@ -154,9 +154,9 @@ export const NelsonTokenAbi =
 	{
 		"inputs": [
 			{
-				"internalType": "bytes32",
+				"internalType": "string",
 				"name": "textHashed",
-				"type": "bytes32"
+				"type": "string"
 			},
 			{
 				"internalType": "string",
@@ -212,9 +212,9 @@ export const NelsonTokenAbi =
 	{
 		"inputs": [
 			{
-				"internalType": "bytes32",
+				"internalType": "string",
 				"name": "textHashed",
-				"type": "bytes32"
+				"type": "string"
 			}
 		],
 		"name": "getNMByHash",
@@ -241,9 +241,9 @@ export const NelsonTokenAbi =
 			{
 				"components": [
 					{
-						"internalType": "bytes32",
+						"internalType": "string",
 						"name": "textHashed",
-						"type": "bytes32"
+						"type": "string"
 					},
 					{
 						"internalType": "string",
