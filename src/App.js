@@ -67,7 +67,7 @@ const App = () => {
       <Switch location={location} key={location.pathname}>
         <Route exact path="/" component={Home} />
         <Route path="/projet/:id" component={Projects} />
-        <Route path="/expo" component={Expo} > <Expo /></Route>
+        <Route path="/expo/:id" component={Expo} > <Expo /></Route>
         <Route path="/create" component={Creation} > <Creation/></Route>
         <Route path="/contact" component={Contact} />
         <Redirect to='/' />

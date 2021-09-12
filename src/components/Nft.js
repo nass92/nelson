@@ -1,9 +1,12 @@
-import { Center, Heading, Image, Container, VStack } from "@chakra-ui/react"
+// import { Center, Heading, Image, Container, VStack } from "@chakra-ui/react"
 import { motion } from "framer-motion";
-import { AspectRatio } from "@chakra-ui/react"
+// import { AspectRatio } from "@chakra-ui/react"
 import React from 'react'
-import ReactPlayer from 'react-player'
+// import ReactPlayer from 'react-player'
+
+
 const Nff = ({ nft }) => {
+
   let left = Math.floor(Math.random() * 200 + 700) + "px";
   let top = Math.floor(Math.random() * 200 + 150) + "px";
   let size = "scale(" + (Math.random() + 0.7) + ")";

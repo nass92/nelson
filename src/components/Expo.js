@@ -9,70 +9,42 @@ import Navigation from '../components/Navigation';
 import ButtonsBottom from '../components/ButtonBottom';
 import Logo from '../components/logo';
 import Mouse from '../components/Mouse';
+import { useRouteMatch } from "react-router-dom";
 
 
 
 const Expo = (nft) => {
-
+  
+  const match = useRouteMatch("/expo/:id");
   let [expo, setExpo] = useState([])
   const TXT = useContext(DappContext)
   const [web3State] = useContext(Web3Context);
 
-  useEffect(() => {
-    console.log(TXT)
-    if (TXT) {
-      if (web3State.chainId === 4) {
-        const getNFT = async () => {
-          const expoOWned = []
-          const totalSupply = await TXT.totalSupply()
+  useEffect(() => {    
+    const getNFT = async () => {
+      const expoOWned = []
+      const totalSupply = await TXT.totalSupply()
+      for (let i = 0; i < totalSupply.toString(); i++) {
+        // let approved = await TXT.getApproved(i)
+        const nft = await TXT.getNMById(i)
 
-          for (let i = 0; i <= totalSupply.toString(); i++) {
-
-            let owner = await TXT.ownerOf(i)
-
-            let approved = await TXT.getApproved(i)
-
-
-
-            if (owner.toLowerCase() === web3State.account.toLowerCase()) {
-
-              const nft = await TXT.getNMById(i)
-              console.log(nft)
-
-
-              expoOWned.push({
-                txt: nft.txt,
-                title: nft.title,
-                author: nft.author,
-                url: nft.url,
-                id: i,
-              })
-
-            } else if (!approved.startsWith('0x000')) {
-              const nft = await TXT.getTXTById(i)
-
-              expoOWned.push({
-
-                txt: nft.txt,
-                title: nft.title,
-                author: nft.author,
-                url: nft.url,
-                id: i,
-              })
-            }
-            setExpo(expoOWned)
-          }
-          console.log('ewewe')
-
-
-        }
-
-        try {
-          getNFT()
-        } catch (e) {
-          console.log(e)
-        }
+        expoOWned.push({
+          txt: nft.txt,
+          title: nft.title,
+          author: nft.artist,
+          url: nft.url,
+          id: i,
+        })
       }
+      setExpo(expoOWned)
+    }
+
+    try {
+      if (web3State.chainId === 4 && TXT !== undefined) {
+        getNFT()
+      }
+    } catch (e) {
+      console.log(e)
     }
 
   }, [TXT, web3State.account, web3State.chainId])
@@ -85,13 +57,10 @@ const Expo = (nft) => {
         <Logo />
 
         <SimpleGrid columns={[1, 1, 1]}>
-          {
-            expo.map((el, index) => {
-              return <Nff key={index} nft={el}></Nff>
-            })}
+          {expo.length > 0 ? <Nff key={match.params.id} nft={expo[match.params.id]}></Nff> : ''}
         </SimpleGrid>
 
-        <ButtonsBottom left={'/project-4'} right={'/contact'} />
+        <ButtonsBottom left={parseInt(match.params.id) === 0 ? `${expo.length - 1}`: `${match.params.id - 1}`} right={parseInt(match.params.id) === expo.length - 1 ?`0` : `${parseInt(match.params.id) + 1}`} />
       </div>
     </main>
   );
