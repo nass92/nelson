@@ -33,7 +33,7 @@ const Navigation = () => {
         <NavLink to="/create" activeClassName="nav-active" className="hover">
           <li>Create</li>
         </NavLink>
-        <NavLink to="/expo" activeClassName="nav-active" className="hover">
+        <NavLink to="/expo/0" activeClassName="nav-active" className="hover">
           <li>Exposition</li>
         </NavLink>
         </ul>
