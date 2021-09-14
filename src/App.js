@@ -3,7 +3,6 @@ import { Switch, Route, useLocation, useHistory, Redirect } from "react-router-d
 import Home from "./Pages/Home";
 import { Projects } from "./Pages/Project";
 import Contact from "./Pages/Contact";
-import Nft from "./Pages/Nft";
 import { AnimatePresence } from "framer-motion";
 import Expo from "./components/Expo";
 import Creation from "./Pages/Create";

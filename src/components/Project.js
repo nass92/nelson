@@ -64,11 +64,8 @@ const Project = (props) => {
       <div className="project-content">
         <h1>{project.title}</h1>
         <p>{project.date}</p>
-        <ul className="languages">
-          {project.languages.map((item) => {
-            return <li key={item}>{item}</li>;
-          })}
-        </ul>
+        <p>{project.artiste}</p>
+       
       </div>
       <motion.div
         className="img-content"

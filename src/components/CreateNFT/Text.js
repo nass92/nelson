@@ -1,6 +1,6 @@
 import React from "react";
-import { Input,Box, InputGroup, InputLeftAddon,CloseButton, Textarea, Stack, Button} from "@chakra-ui/react"
-import {useDisclosure, useToast} from "@chakra-ui/react"
+import {Box, CloseButton, Button} from "@chakra-ui/react"
+import { useToast} from "@chakra-ui/react"
 import { DappContext} from "../../Dapp"
 import { useState, useContext } from "react"
 import { Web3Context } from "web3-hooks";
@@ -92,7 +92,7 @@ const handleSendNFT = async () => {
 
   return(
     <form onSubmit={handleSubmit(handleSendNFT)} className="contact-form">
-    <h2>contactez-nous</h2>
+    <h2>Create Your NFT</h2>
     <div className="form-content">
       <input
         type="text"

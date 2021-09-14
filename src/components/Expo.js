@@ -1,7 +1,5 @@
 import React, { useState, useContext, useEffect } from "react";
-import { projectsData } from "../data/projectsData";
-import { motion } from "framer-motion";
-import { Container, SimpleGrid } from "@chakra-ui/react";
+import { SimpleGrid } from "@chakra-ui/react";
 import Nff from "./Nft";
 import { Web3Context } from "web3-hooks";
 import { DappContext } from '../Dapp'

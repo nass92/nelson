@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, LockIcon, useDisclosure } from "@chakra-ui/react";
+import { Button, useDisclosure } from "@chakra-ui/react";
 import { Web3Context } from "web3-hooks";
 import { useContext } from "react";
 
@@ -22,7 +22,7 @@ const SocialNetwork = () => {
   }
 
   const [web3State, login] = useContext(Web3Context);
-  const { isOpen: isOpenLogoutModal, onOpen: onOpenLogoutModal, onClose: onCloseLogoutModal } = useDisclosure();
+  const {  onOpen: onOpenLogoutModal} = useDisclosure();
   const handleClickLogin = () => {
     if (!web3State.isLogged) {
       login();

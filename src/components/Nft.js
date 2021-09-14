@@ -1,8 +1,5 @@
-// import { Center, Heading, Image, Container, VStack } from "@chakra-ui/react"
 import { motion } from "framer-motion";
-// import { AspectRatio } from "@chakra-ui/react"
 import React from 'react'
-// import ReactPlayer from 'react-player'
 
 
 const Nff = ({ nft }) => {
@@ -75,13 +72,13 @@ const Nff = ({ nft }) => {
         variants={imgAnim}
         transition={{ duration: 1.2 }}
       >
-        <div className="video-container hover">
-          <span>
+        <div >
+          {/*<span>
             <h3>{nft.title}</h3>
             <p>{nft.txt}</p>
-          </span>
-          <img src={nft.url} alt={nft.title} className="video" />
-          {/*<video src={nft.url} alt={nft.title} className="video" />*/}
+          </span>}
+         {/* <img src={nft.url} alt={nft.title} className="video" />*/}
+          <video controls src={nft.url} alt={nft.title} className="video"  type="video/mp4" />
         </div>
         <div className="button-container">
           <a href={nft.url} target="_blank" rel="noopener noreferrer" className="hover">

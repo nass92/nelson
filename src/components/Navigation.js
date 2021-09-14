@@ -11,19 +11,19 @@ const Navigation = () => {
           <li>accueil</li>
         </NavLink>
 
-        <li className="nav-portfolio">portfolio
+        <li className="nav-portfolio">Arts
           <ul className="nav-projects">
             <NavLink to="/projet/1" activeClassName="nav-active" className="hover">
-              <li>projet 1</li>
+              <li>Painting One</li>
             </NavLink>
             <NavLink to="/projet/2" activeClassName="nav-active" className="hover">
-              <li>projet 2</li>
+              <li>Painting Two</li>
             </NavLink>
             <NavLink to="/projet/3" activeClassName="nav-active" className="hover">
-              <li>projet 3</li>
+              <li>Painting Three</li>
             </NavLink>
             <NavLink to="/projet/4" activeClassName="nav-active" className="hover">
-              <li>projet 4</li>
+              <li>Painting Four</li>
             </NavLink>
           </ul>
         </li>
