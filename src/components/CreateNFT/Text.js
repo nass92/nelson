@@ -17,7 +17,6 @@ const Create= () => {
     register,
     watch,
     handleSubmit,
-    formState: { errors },
   } = useForm();
   const [, setLoading] = useState(false)
 
