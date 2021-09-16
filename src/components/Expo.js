@@ -38,7 +38,7 @@ const Expo = (nft) => {
     }
 
     try {
-      if (web3State.chainId === 4 && TXT !== undefined) {
+      if (web3State.chainId === 6 && TXT !== undefined) {
         getNFT()
       }
     } catch (e) {

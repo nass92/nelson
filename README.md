@@ -1,12 +1,13 @@
-# Getting Started with Create React App
+# Installation
+Assurez-vous de naviguer sur Brave, firefox, ou google chrome. Et d'avoir metamask d'installer sur votre navigateur.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### Yarn 
+Si vous voulez Cloner ce projet, copiez collez ces commandes sur votre terminal :
+git clone https://github.com/    cd    .
 
-## Available Scripts
+une fois le projet cloner et ouvert dans un editeur de texte; taper dans votre terminal la commande " yarn " afin d'installer toute les dependances nécessaire. 
 
-In the project directory, you can run:
-
-### `yarn start`
+### Yarn start
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
@@ -14,12 +15,12 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
 
-### `yarn test`
+### Yarn test
 
 Launches the test runner in the interactive watch mode.\
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `yarn build`
+### Yarn build
 
 Builds the app for production to the `build` folder.\
 It correctly bundles React in production mode and optimizes the build for the best performance.
@@ -29,43 +30,109 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `yarn eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+# Nelson 
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Ce projet est à destination d'un artiste contemporain, Nelson Makamo.
+le but n'est pas de faire de ces tableaux des nft. Mais de répondre à cette problématique:
+Comment créer une nouvelle source de liquidité pour ces infrastructures?
 
-## Learn More
+L'objectif est de transformer des vidéos de l'artiste en nft.
+pour cela, différentes étapes ont été définies.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## les dépendances : 
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Différentes librairies et outils ont été utilisés durant ce projet :
 
-### Code Splitting
+React, React-router-dom => facilite la navigation entre les différentes pages d'un même projet.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Web3-Hooks => Permet de simplifier la connexion entre le front-end et la blockchaine (metamask par exemple)
 
-### Analyzing the Bundle Size
+Ether.js => Il nous permet d'écrire notre code de connexion avec la blockchain.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Axios => Permet de récupérer une API, ou d'envoyer des éléments à une adresse, serveur ...
 
-### Making a Progressive Web App
+SASS (SCSS) => styles css (simplifié).
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+chakra-ui => facilite le code de différent élément, comme par exemple un button, ou un modal etc.
 
-### Advanced Configuration
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## Création NFT. 
 
-### Deployment
+"pinOnIpfs" permet d'envoyer un fichier direct sur Pinata. Dans cette fonction, un try catch permet de retourner les erreurs, si elles sont existantes. Dans le try on definit au préalable le type de données que nous voulons envoyer sur Pinata.
+Puis on utilise axios.post afin de les envoyés sur le réseau Pinata qui renvoie direct le CID.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+    const pinOnIpfs = async (file) => {
+    try {
+        let formatData = new FormData();
+        formatData.append("file", file);
 
-### `yarn build` fails to minify
+        const hash = await axios.post(`https://api.pinata.cloud/pinning/pinFileToIPFS`, formatData, {
+            headers: {
+            "Content-Type": `multipart/form-data; boundary=${formatData._boundary}`,
+            pinata_api_key: process.env.REACT_APP_PINATA_API_KEY,
+            pinata_secret_api_key: process.env.REACT_APP_PINATA_SECRET_KEY,
+            },
+        })
+        .then((result) => result.data.IpfsHash);
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-# nelson
+        return hash
+    } catch (e) {
+        console.error(e.message)
+    }
+
+La fonction handleSendNFT, s'occupe de presque toute la procédure de création.
+Un try catch est également déclaré. on récupère d'abord toutes les informations entrées dans le formulaire de création nft
+    try {
+    setLoading(true)
+    const txt = watch().message.trim().split("").filter(el => !['!','?','.',';',':','/',','].includes(el)).join('').split('  ').join('').toLowerCase()
+    const textHashed = await ethers.utils.id(txt)
+    const hash = await pinOnIpfs(watch().file[0])
+    const nft = {
+      author: watch().author.toString(),
+      textHashed: textHashed,
+      txt: watch().message,
+      url: `https://gateway.pinata.cloud/ipfs/${hash}`,
+      title: watch().title,
+    }
+
+Puis, une fois ces informations récuperées, on appelle la fonction "certify" de notre smart contract, afin de créer le nft demandé.
+
+    const tx = await TXT.certify(nft.textHashed, nft.txt, nft.title, nft.url, nft.author). 
+
+La création de nft ne peut être faite uniquement par l'artiste. seul l'owner du smart contract peut appeler cette fonction certify.
+
+
+## Expo 
+
+La partie expo a pour but d'afficher tous les NFT du smart-contract. En effet, toute personne peut visualiser un nft, même s'il n'est pas l'owner.
+
+Pour cela, à l'appel de la fonction Expo; Les nft sont récupérés par la fonction getNFT() et push dans un tableau.
+
+
+const getNFT = async () => {
+      const expoOWned = []
+      const totalSupply = await TXT.totalSupply()
+      for (let i = 0; i < totalSupply.toString(); i++) {
+        // let approved = await TXT.getApproved(i)
+        const nft = await TXT.getNMById(i)
+
+        expoOWned.push({
+          txt: nft.txt,
+          title: nft.title,
+          author: nft.artist,
+          url: nft.url,
+          id: i,
+        })
+      }
+      setExpo(expoOWned)
+    }
+
+L'affichage se fait grâce à un map du tableau. Chaque nft à son id avec ces données associées.
+
+
+
+
+
